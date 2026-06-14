@@ -313,7 +313,7 @@ function Picker({ selected, toggle, onContinue, onHome, hideBack }) {
 function Blending({ selected }) {
   const colors = selected.map(colorOf);
   return (
-    <div className="flex flex-col items-center justify-center px-8 text-center" style={{ height: "100%" }}>
+    <div className="flex flex-col items-center justify-center px-8 text-center" style={{ flex: 1, minHeight: 0 }}>
       <div className="relative mb-10" style={{ width: 140, height: 140 }}>
         {colors.slice(0, 5).map((c, idx) => (
           <div
@@ -1051,7 +1051,7 @@ function AppShell({ selected, onReblend }) {
   ];
 
   return (
-    <div className="flex flex-col" style={{ height: "100%" }}>
+    <div className="flex flex-col" style={{ flex: 1, minHeight: 0 }}>
       {celebrate && (
         <Celebration
           onSeeDiscover={() => { setCelebrate(false); setNav("discover"); }}
