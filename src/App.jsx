@@ -1517,7 +1517,7 @@ export default function BlendiDemo() {
 
         .bl-stage { background:${T.sageMist}; padding:32px 0; }
         .bl-phone { max-width:448px; margin:0 auto; background:#FFFFFF; height:760px; max-height:85vh; border-radius:24px; overflow:hidden; box-shadow:0 0 0 1px ${T.line}, 0 12px 32px rgba(35,39,31,0.08); position:relative; display:flex; flex-direction:column; }
-        .bl-phonescroll { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+        .bl-phonescroll { flex:1; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; }
         .bl-phonenav { flex-shrink:0; }
 
         @media (max-width:820px) {
