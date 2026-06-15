@@ -225,7 +225,7 @@ function Welcome({ onStart }) {
         className="px-9 py-3.5 rounded-xl text-white text-lg active:scale-[0.98] clipbtn transition-transform mb-4"
         style={{ background: T.sageDeep, fontFamily: "'Fraunces', serif" }}
       >
-        Try the demo
+        
       </button>
       <a
         href={FORM_URL}
@@ -1114,7 +1114,7 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
   const [open, setOpen] = useState(false);
   const links = [
     ["home", "Home"],
-    ["demo", "Demo"],
+    
     ["waitlist", "Waitlist"],
     ["board", "Board"],
   ];
