@@ -1287,33 +1287,7 @@ function HomePage({ goDemo, formUrl, boardUrl }) {
   );
 }
 
-function DemoPage({ selected, toggle, screen, setScreen, completeMission, missionDone, sprintJoined, joinSprint, onReblend }) {
-  return (
-    <div className="bl-page">
-      <div className="bl-wrap" style={{ maxWidth: 760, textAlign: "center", marginBottom: 28 }}>
-        <p className="bl-kicker">Demo</p>
-        <h1 className="bl-pagetitle" style={{ textAlign: "center" }}>See Blendi in action</h1>
-        <p className="bl-prose" style={{ textAlign: "center", margin: "0 auto" }}>Tap through a sample group to see how blending, missions, and Discover work.</p>
-        <div className="bl-previewnote">
-          <Sparkles size={14} style={{ flexShrink: 0 }} />
-          <span>This is a preview, not the real app yet. The people and chat messages here are examples. Join the waitlist to be notified when real groups open up.</span>
-        </div>
-      </div>
 
-      <div className="bl-stage">
-        <div className="bl-phone">
-          {screen === "pick" && (
-            <Picker selected={selected} toggle={toggle} onContinue={() => selected.length >= 2 && setScreen("blending")} onHome={null} hideBack />
-          )}
-          {screen === "blending" && <Blending selected={selected} />}
-          {screen === "app" && (
-            <AppShell selected={selected} onReblend={onReblend} />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function WaitlistPage({ formUrl }) {
   return (
@@ -1540,18 +1514,7 @@ export default function BlendiDemo() {
       <NavBar page={page} setPage={setPage} goDemo={goDemo} formUrl={FORM_URL} />
 
       {page === "home" && <HomePage goDemo={goDemo} formUrl={FORM_URL} boardUrl={BOARD_FORM_URL} />}
-      {page === "demo" && (
-        <DemoPage
-          selected={selected}
-          toggle={toggle}
-          screen={screen}
-          setScreen={setScreen}
-          missionDone={missionDone}
-          sprintJoined={sprintJoined}
-          joinSprint={() => setSprintJoined(true)}
-          onReblend={reblend}
-        />
-      )}
+      
       {page === "waitlist" && <WaitlistPage formUrl={FORM_URL} />}
       {page === "board" && <BoardPage boardUrl={BOARD_FORM_URL} />}
 
