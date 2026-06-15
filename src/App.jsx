@@ -1114,12 +1114,12 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
   const [open, setOpen] = useState(false);
   const links = [
     ["home", "Home"],
-    
     ["waitlist", "Waitlist"],
     ["board", "Board"],
+    ["faq", "FAQ"],
   ];
   const go = (key) => {
-    if (key === "demo") goDemo(); else setPage(key);
+    setPage(key);
     setOpen(false);
   };
   return (
@@ -1129,7 +1129,7 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
           <img src={LOGO} alt="" style={{ width: 32, height: "auto" }} />
         </button>
 
-        <div className="bl-navlinks">
+         <div className="bl-navlinks">
           {links.map(([key, label]) => (
             <button
               key={key}
@@ -1139,7 +1139,6 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
               {label}
             </button>
           ))}
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" className="bl-navcta">Join waitlist</a>
         </div>
 
         <button className="bl-hamburger" onClick={() => setOpen((o) => !o)} aria-label="Menu">
@@ -1154,9 +1153,6 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
               {label}
             </button>
           ))}
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" className="bl-navcta" style={{ margin: "8px 20px 16px", textAlign: "center" }}>
-            Join waitlist
-          </a>
         </div>
       )}
     </div>
@@ -1164,7 +1160,6 @@ function NavBar({ page, setPage, goDemo, formUrl }) {
 }
 
 function HomePage({ goDemo, formUrl, boardUrl }) {
-  const [openFaq, setOpenFaq] = useState(null);
   return (
     <div>
       {/* HERO — white */}
@@ -1243,33 +1238,6 @@ function HomePage({ goDemo, formUrl, boardUrl }) {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* FAQ — white */}
-      <div className="bl-wrap" style={{ maxWidth: 760 }}>
-        <p className="bl-kicker">FAQ</p>
-        <h2 className="bl-section">Questions people ask</h2>
-        <div className="bl-faqlist">
-          {FAQS.map((f, i) => (
-            <div key={f.q} className="bl-faqitem">
-              <button className="bl-faqq" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                <span>{f.q}</span>
-                <span className="bl-faqtoggle">{openFaq === i ? "−" : "+"}</span>
-              </button>
-              {openFaq === i && <p className="bl-faqa">{f.a}</p>}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CONTACT — white */}
-      <div className="bl-wrap" style={{ maxWidth: 620, textAlign: "center", margin: "64px auto 0" }}>
-        <p className="bl-kicker">Contact</p>
-        <h2 className="bl-section">Questions, ideas, or feedback?</h2>
-        <p className="bl-prose" style={{ textAlign: "center", margin: "0 auto 18px" }}>
-          If you have a question that isn't covered above, or just want to share an idea, send us an email and we'll get back to you.
-        </p>
-        <a href="mailto:blendi.ceo@gmail.com" className="bl-secondary">blendi.ceo@gmail.com</a>
       </div>
 
       {/* FINAL CTA — sage */}
@@ -1353,6 +1321,40 @@ function BoardPage({ boardUrl }) {
   );
 }
 
+function FaqPage() {
+  const [openFaq, setOpenFaq] = useState(null);
+  return (
+    <div className="bl-page">
+      {/* FAQ — white */}
+      <div className="bl-wrap" style={{ maxWidth: 760 }}>
+        <p className="bl-kicker">FAQ</p>
+        <h2 className="bl-section">Questions people ask</h2>
+        <div className="bl-faqlist">
+          {FAQS.map((f, i) => (
+            <div key={f.q} className="bl-faqitem">
+              <button className="bl-faqq" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                <span>{f.q}</span>
+                <span className="bl-faqtoggle">{openFaq === i ? "−" : "+"}</span>
+              </button>
+              {openFaq === i && <p className="bl-faqa">{f.a}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CONTACT — white */}
+      <div className="bl-wrap" style={{ maxWidth: 620, textAlign: "center", margin: "64px auto 0" }}>
+        <p className="bl-kicker">Contact</p>
+        <h2 className="bl-section">Questions, ideas, or feedback?</h2>
+        <p className="bl-prose" style={{ textAlign: "center", margin: "0 auto 18px" }}>
+          If you have a question that isn't covered above, or just want to share an idea, send us an email and we'll get back to you.
+        </p>
+        <a href="mailto:blendi.ceo@gmail.com" className="bl-secondary">blendi.ceo@gmail.com</a>
+      </div>
+    </div>
+  );
+}
+
 function SiteFooter({ setPage }) {
   return (
     <div className="bl-footer">
@@ -1365,6 +1367,7 @@ function SiteFooter({ setPage }) {
           <button onClick={() => setPage("home")}>Home</button>
           <button onClick={() => setPage("waitlist")}>Waitlist</button>
           <button onClick={() => setPage("board")}>Board</button>
+          <button onClick={() => setPage("faq")}>FAQ</button>
           <a href="mailto:blendi.ceo@gmail.com" className="bl-footemail">blendi.ceo@gmail.com</a>
         </div>
       </div>
@@ -1517,6 +1520,7 @@ export default function BlendiDemo() {
       
       {page === "waitlist" && <WaitlistPage formUrl={FORM_URL} />}
       {page === "board" && <BoardPage boardUrl={BOARD_FORM_URL} />}
+      {page === "faq" && <FaqPage />}
 
       <SiteFooter setPage={setPage} />
     </div>
