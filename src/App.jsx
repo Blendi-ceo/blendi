@@ -1175,7 +1175,7 @@ function HomePage({ goDemo, formUrl, boardUrl }) {
             <h1 className="bl-h1">Stop scrolling,<br />start building.</h1>
             <p className="bl-lede">Pick a few interests. Blendi puts you in a small group of people who share them, gives your group a project with a deadline, and the tools to get it done.</p>
             <div className="bl-herobtns">
-              <button onClick={goDemo} className="bl-primary">Try the demo</button>
+              
               <a href={formUrl} target="_blank" rel="noopener noreferrer" className="bl-secondary">Join the waitlist</a>
             </div>
             <p className="bl-fine">Free to use &middot; built for students &middot; open to everyone</p>
